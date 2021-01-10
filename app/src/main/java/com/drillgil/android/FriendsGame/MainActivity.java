@@ -12,10 +12,10 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    int scoreTeamA = 0;
-    int scoreTeamB = 0;
-    int A = 0;
-    int B = 0;
+    private int scoreTeamA = 0;
+    private int scoreTeamB = 0;
+    private int countSaveMeButtonTeamA = 0;
+    private int countSaveMeButtonTeamB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveMeTeamA(View view) {
         Button btn = (Button)findViewById(R.id.button2_team_a);
-        btn.setBackgroundColor(Color.WHITE);
-        btn.setText(String.valueOf(++A));
+        btn.setText(String.valueOf(++countSaveMeButtonTeamA));
     }
 
     public void minusThreePointsTeamA(View view) {
@@ -54,9 +53,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveMeTeamB(View view) {
-        Button btn = (Button)findViewById(R.id.button2_team_b);
-        btn.setBackgroundColor(Color.WHITE);
-        btn.setText(String.valueOf(++B));
+        Button saveMeButtonTeamB = (Button)findViewById(R.id.button2_team_b);
+        saveMeButtonTeamB.setText(String.valueOf(++countSaveMeButtonTeamB));
     }
 
     public void minusThreePointsTeamB(View view) {
@@ -73,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         Button btnA = (Button)findViewById(R.id.button2_team_a);
         Button btnB = (Button)findViewById(R.id.button2_team_b);
 
-
         scoreTeamA = 0;
         scoreTeamB = 0;
         displayForTeamA(scoreTeamA);
@@ -83,16 +80,13 @@ public class MainActivity extends AppCompatActivity {
 
         btnA.setText("\uD83D\uDC7BSave Me\uD83D\uDC7B");
         btnB.setText("\uD83D\uDC7BSave Me\uD83D\uDC7B");
-        btnA.setBackgroundColor(Color.GREEN);
-        btnB.setBackgroundColor(Color.GREEN);
-
 
     }
 
     /**
      * Displays the given score for Team A.
      */
-    public void displayForTeamA(int score) {
+    private void displayForTeamA(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_a_score);
         TextView winner = (TextView) findViewById(R.id.the_winner);
 
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Displays the given score for Team B.
      */
-    public void displayForTeamB(int score) {
+    private void displayForTeamB(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_score);
         TextView winner = (TextView) findViewById(R.id.the_winner);
 
@@ -128,12 +122,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void display(int rand) {
+    private void display(int rand) {
         TextView randomNum = (TextView) findViewById(R.id.random_num);
         randomNum.setText(String.valueOf(rand));
     }
 
-    public void displayMessage(int rand){
+    private void displayMessage(int rand){
         TextView q = findViewById(R.id.random_quastion);
 
         switch (rand){
@@ -155,18 +149,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetSaveMeBtnTeamA(View view) {
         Button btnA = (Button)findViewById(R.id.button2_team_a);
-        A = 0;
-        B = 0;
+        countSaveMeButtonTeamA = 0;
+        countSaveMeButtonTeamB = 0;
         btnA.setText("\uD83D\uDC7BSave Me\uD83D\uDC7B");
-        btnA.setBackgroundColor(Color.GREEN);
     }
 
     public void resetSaveMeBtnTeamB(View view) {
         Button btnB = (Button)findViewById(R.id.button2_team_b);
-        A = 0;
-        B = 0;
+        countSaveMeButtonTeamA = 0;
+        countSaveMeButtonTeamB = 0;
         btnB.setText("\uD83D\uDC7BSave Me\uD83D\uDC7B");
-        btnB.setBackgroundColor(Color.GREEN);
 
 
     }
